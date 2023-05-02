@@ -1,0 +1,147 @@
+<div mat-dialog-title>
+    <h1>Person Form</h1>
+</div>
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" id="name" formControlName ="name">
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Celular</mat-label>
+            <input matInput type="text" name="foneCelular" id="foneCelular" placeholder="Ex: (99) 9999-9999" formControlName ="foneCelular">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nickname</mat-label>
+            <input matInput type="text" name="nickname" id="nickname" formControlName ="nickname">
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput type="text" name="cpf" id="cpf" formControlName ="cpf">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>District</mat-label>
+            <input matInput type="text" name="district" id="district" placeholder="Ex: Centro" formControlName ="district">
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Document Number</mat-label>
+            <input matInput type="text" name="documentNumber" id="documentNumber" formControlName ="documentNumber">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>RG</mat-label>
+            <input matInput type="text" name="rg" id="rg" formControlName ="rg">
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="notice_email" id="notice_email" placeholder="Ex: example@email.com" formControlName ="notice_mail">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Birthday</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName ="birthday">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="ehOrgaoPublico">
+            <mat-label><b>É Orgão Publico?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="estadoCivilId">
+            <mat-label><b>Estado Civil</b></mat-label>
+            <mat-radio-button value="1">Solteiro</mat-radio-button>
+            <mat-radio-button value="2">Casado</mat-radio-button>
+            <mat-radio-button value="3">Viuvo</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="sexo">
+            <mat-label><b>Sexo</b></mat-label>
+            <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+            <mat-radio-button value="Feminino">Feminino</mat-radio-button>
+            <mat-radio-button value="Outro">Outro</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isClient"> 
+            <mat-label><b>É Cliente?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isCollaborator">
+            <mat-label><b>É Colaborador?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isCollectionAgent">
+            <mat-label><b>É Agente de cobrança?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isHealthInsurance">
+            <mat-label><b>É Health Insurance?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isPatient">
+            <mat-label><b>É Paciente?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isProvider">
+            <mat-label><b>É Fornecedor?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isStaff">
+            <mat-label><b>É Staff?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="isPrestadora">
+            <mat-label><b>É Prestadora?</b></mat-label>
+            <mat-radio-button value=true>Sim</mat-radio-button>
+            <mat-radio-button value=false>Não</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select an option" formControlName ="personType">
+            <mat-label><b>É pessoa física ou jurídica?</b></mat-label>
+            <mat-radio-button value="PF">PF</mat-radio-button>
+            <mat-radio-button value="PJ">PJ</mat-radio-button>
+          </mat-radio-group>
+    </div>
+</div>
+<div mat-dialog-actions class="action">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button color="primary">Save</button>
+</div>
+</form>

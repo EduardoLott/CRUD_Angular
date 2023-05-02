@@ -1,0 +1,165 @@
+<div class="main-panel">
+
+<mat-toolbar color="primary">
+    <span>CRUD Application</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button (click)="openAddEditPesonForm()">
+        ADD PERSON
+    </button>
+</mat-toolbar>
+
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+<div class="table-list">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+  
+      <!-- NIckName Column -->
+      <ng-container matColumnDef="nickname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nickname </th>
+        <td mat-cell *matCellDef="let row"> {{row.nickname}} </td>
+      </ng-container>
+
+      <!-- NIckName Column -->
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
+        <td mat-cell *matCellDef="let row"> {{row.cpf}} </td>
+      </ng-container>
+  
+      <!-- Celular Column -->
+      <ng-container matColumnDef="foneCelular">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
+        <td mat-cell *matCellDef="let row"> {{row.foneCelular}} </td>
+      </ng-container>
+
+      <!-- District Column -->
+      <ng-container matColumnDef="district">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+        <td mat-cell *matCellDef="let row"> {{row.district}} </td>
+      </ng-container>
+
+      <!-- birthday Column -->
+      <ng-container matColumnDef="birthday">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
+        <td mat-cell *matCellDef="let row"> {{row.birthday | date}} </td>
+      </ng-container>
+
+     <!-- RG Column -->
+      <ng-container matColumnDef="rg">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> RG </th>
+        <td mat-cell *matCellDef="let row"> {{row.rg}} </td>
+      </ng-container>
+
+      <!-- Document Number Column -->
+      <ng-container matColumnDef="documentNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Document Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.documentNumber}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="notice_mail">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.notice_mail}} </td>
+      </ng-container>
+
+      <!-- personType Column -->
+      <ng-container matColumnDef="personType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É pessoa física ou jurídica? </th>
+        <td mat-cell *matCellDef="let row"> {{row.personType}} </td>
+      </ng-container>
+
+      <!-- Orgao Column -->
+      <ng-container matColumnDef="ehOrgaoPublico">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Orgão Publico? </th>
+        <td mat-cell *matCellDef="let row"> {{row.ehOrgaoPublico  ? 'Sim' : 'Não' }} </td>
+      </ng-container>
+
+      <!-- Estado Civil Column -->
+      <ng-container matColumnDef="estadoCivilId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado Civil </th>
+        <td mat-cell *matCellDef="let row"> {{row.estadoCivilId ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- Sexo Column -->
+      <ng-container matColumnDef="sexo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </th>
+        <td mat-cell *matCellDef="let row"> {{row.sexo}} </td>
+      </ng-container>
+
+      <!-- Is Client Column -->
+      <ng-container matColumnDef="isClient">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Cliente? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isClient ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isCollaborator Column -->
+      <ng-container matColumnDef="isCollaborator">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Colaborador? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isCollaborator ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isCollectionAgent Column -->
+      <ng-container matColumnDef="isCollectionAgent">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Agente de cobrança? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isCollectionAgent ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isHealthInsurance Column -->
+      <ng-container matColumnDef="isHealthInsurance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Health Insurance? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isHealthInsurance ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+  
+      <!-- isPatient Column -->
+      <ng-container matColumnDef="isPatient">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Paciente? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isPatient ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isProvider Column -->
+      <ng-container matColumnDef="isProvider">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Fornecedor? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isProvider ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isStaff Column -->
+      <ng-container matColumnDef="isStaff">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Staff? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isStaff ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+      <!-- isPrestadora Column -->
+      <ng-container matColumnDef="isPrestadora">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> É Prestadora? </th>
+        <td mat-cell *matCellDef="let row"> {{row.isPrestadora ? 'Sim' : 'Não'}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
+</div>  
