@@ -1,12 +1,17 @@
-.main-panel{
-    
-    height: 100%;
-    width: 100%;
-}
 
 .tool-panel{
     position: fixed;
+    left: 0;
+    right: 0;
 }
+
+.home-panel{
+    padding-top: 4%;
+    
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
 
 .example-spacer {
     flex: 1 1 auto;

@@ -6,6 +6,7 @@ import { PersonService } from 'src/services/person.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { CoreService } from 'src/services/core.service';
 
 
 @Component({
@@ -15,13 +16,13 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class MainComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'name', 'nickname', 'cpf','district',"estadoCivilId","foneCelular","rg","birthday","sexo","notice_mail","personType","documentNumber","ehOrgaoPublico","isClient","isCollaborator","isCollectionAgent","isHealthInsurance","isPatient","isProvider","isStaff","isPrestadora"];
+  displayedColumns: string[] = ['id', 'name', 'nickname', 'cpf','district',"estadoCivilId","foneCelular","rg","birthday","sexo","notice_mail","personType","documentNumber","ehOrgaoPublico","isClient","isCollaborator","isCollectionAgent","isHealthInsurance","isPatient","isProvider","isStaff","isPrestadora",'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _dialog: MatDialog, private _personService: PersonService){
+  constructor(private _dialog: MatDialog, private _personService: PersonService, private _coreService: CoreService){
 
   }
 
@@ -39,7 +40,14 @@ export class MainComponent implements OnInit{
   }
 
   openAddEditPesonForm(){
-    this._dialog.open(PersonAddEditComponent)
+    const dialogRef = this._dialog.open(PersonAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getPersonList();
+        }
+      }
+    })
   }
 
   getPersonList(){
@@ -53,5 +61,33 @@ export class MainComponent implements OnInit{
         console.log(err)
       }
     })
+  }
+
+  deletePerson(id: number){
+    this._personService.deletePerson(id).subscribe({
+      next: (res) => {
+    
+        this._coreService.openSnackBar('Person deleted!', 'done');
+        this.getPersonList();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  openEditPesonForm(data: any){
+    const dialogRef = this._dialog.open(PersonAddEditComponent, {
+      data,
+    });
+    
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getPersonList();
+        }
+      }
+    })
+
   }
 }
